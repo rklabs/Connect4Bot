@@ -58,6 +58,10 @@ such run. Connect4 game is full functional.
 
 [Screencast of terminal](https://asciinema.org/a/4kg197m6r1t1m19ukq4ndjjtd)
 
+Below is the YouTube video of Connect4 gameplay between two users
+
+[![Connect4 game play](https://img.youtube.com/vi/kHhi4OqZcJE/0.jpg)](https://www.youtube.com/watch?v=kHhi4OqZcJE)
+
 Enhancements:
 --------------
 1. Handle multiple boards between multiple user pairs
