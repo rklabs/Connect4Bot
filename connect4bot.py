@@ -219,6 +219,13 @@ class Connect4Bot:
         if match and match.group('column'):
             column = int(match.group('column')) - 1
 
+            if not 0 <= column <= self.connect4.board_width:
+                self.slack_api.post_slack_message(
+                    channel='@' + self.players[slack_message.user]['name'],
+                    text='Invalid column, please choose no. between 1 to 7.'
+                )
+                return
+
             if self.current_player != slack_message.user:
                 self.slack_api.post_slack_message(
                     channel='@' + self.players[slack_message.user]['name'],
@@ -363,7 +370,7 @@ class Connect4Bot:
 
         initiator = '<@' + self.players[self.initiator]['name'] + '>'
         message = 'Starting game, ' + initiator + \
-            ', your turn. Choose column between 1 to 7'
+            ', your turn. Choose column no. between 1 to 7'
 
         legend = '\n'
         for player in [self.initiator, self.opponent]:
