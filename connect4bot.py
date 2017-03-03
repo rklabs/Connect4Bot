@@ -193,7 +193,7 @@ class Connect4Bot:
             return False
 
         print('Game started by {} with {}'.format(
-            self.players[slack_message.user]['name'],
+            self.players[self.initiator]['name'],
             self.players[self.opponent]['name'])
         )
 
@@ -418,8 +418,6 @@ class Connect4Bot:
 
             # Call handler based on action attached to slack message
             if slack_message.action == 'play':
-                import pdb
-                pdb.set_trace()
                 self.handle_game_play(slack_message)
             elif slack_message.action == 'select_column':
                 self.handle_game_select_column(slack_message)
