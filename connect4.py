@@ -1,5 +1,5 @@
 """
-Connect4 is a implementation of Connect4 game.
+Connect4 is an implementation of Connect4 game.
 The board is 7x6 and is maintaind using 2D list.
 Each block in the board can be player_a or player_b
 or empty_block which are represented using 'X', 'O'
@@ -12,7 +12,7 @@ import random
 import functools
 import time
 
-STEP_DELAY = 1
+STEP_DELAY = 1  # second(s)
 
 
 class Connect4:
