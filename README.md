@@ -55,3 +55,10 @@ I have used randomnly simulated columns for each user and below is the result fr
 such run. Connect4 game is full functional.
 
 [Screencast of terminal](https://asciinema.org/a/4kg197m6r1t1m19ukq4ndjjtd)
+
+Enhancements:
+--------------
+1. Handle multiple boards between multiple user pairs
+2. Handle specific exceptions instead of using Exception base class
+3. Need better way of dealing with user commands to bot instead of searching for keywords in input string
+4. Ask for opponent confirmation before starting the game
