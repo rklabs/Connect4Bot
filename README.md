@@ -9,9 +9,11 @@ Introduction:
 Below are the steps to setup the bot 
 
 1. Create virtual env for connect4bot
-    mkvirtualenv connect4botenv
+
+    ```mkvirtualenv connect4botenv```
 2. Install SlackClient Python package and it's dependencies
-    pip install -r requirements.txt
+
+    ```pip install -r requirements.txt```
 3. Export api token generated while creating bot, which is used for setting up websocket connection
 
     ``` export SLACK_BOT_API_TOKEN='xxxyyyyyzzzzz' ```
