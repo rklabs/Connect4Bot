@@ -354,9 +354,23 @@ class Connect4Bot:
             log.info('Connect4 not yet started')
             return
 
+        if self.initiator == self.opponent:
+            self.slack_api.post_slack_message(
+                channel='@' + self.players[self.initiator]['name'],
+                text="Oops! You can't choose yourself as the opponent."
+            )
+            return
+
         initiator = '<@' + self.players[self.initiator]['name'] + '>'
         message = 'Starting game, ' + initiator + \
-            ', your turn. Choose column 1-7'
+            ', your turn. Choose column between 1 to 7'
+
+        legend = '\n'
+        for player in [self.initiator, self.opponent]:
+            legend += self.user_mapping[player] + ' ' + \
+                self.players[player]['name']
+
+        message += legend
 
         player = self.players[self.current_player]['name']
         self.slack_api.post_slack_message(
@@ -378,6 +392,11 @@ class Connect4Bot:
             = (set(self.players.keys()) - set([self.current_player])).pop()
         player_next_turn = self.players[player_next_turn_id]['name']
 
+        legend = '\n'
+        for player in [self.initiator, self.opponent]:
+            legend += self.user_mapping[player] + ' ' + \
+                self.players[player]['name']
+
         for user in self.players:
             # XXX Need to revisit, is it really required?
             if not self.players[user]:
@@ -386,7 +405,8 @@ class Connect4Bot:
             player = self.players[user]['name']
             self.slack_api.post_slack_message(
                 channel='@' + player,
-                text='Current game, @{}\'s turn'.format(player_next_turn)
+                text='Current game, @{}\'s turn. '.
+                        format(player_next_turn) + legend
             )
 
             for row in self.connect4.rows():
